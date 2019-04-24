@@ -1,10 +1,6 @@
 ;;;
 (setq same-window-regexps '("\\`\\*Customiz.*\\*\\'" "\\*cvs[az-]*\\*"))
 
-;; backup in one place. flat, no tree structure
-(setq backup-directory-alist '(("" . "~/.emacs.d/emacs-backup")))
-
-
 ;; settings for new frames (thatis new window in windows, C-x 5 2)
 (setq default-frame-alist
       '((font . "Consolas-8.5")
@@ -34,10 +30,6 @@
 (blink-cursor-mode -1)
 (column-number-mode t)
 
-
-;; ebuff-menu
-;;(require 'ebuff-menu)
-;;(global-set-key (kbd "C-x l") 'electric-buffer-list)
 
 (setq buffer-menu-buffer-font-lock-keywords
       '(("^....*TAGS.*" . font-lock-comment-face)
@@ -89,7 +81,6 @@
 		(access-label . -3))))
 
 (setq c-default-style "my-cpp-style")
-
 
 ;; original text.
 (custom-set-variables

@@ -1,10 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; BEGIN my stuff /miker
 
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 (require 'package)
 (package-initialize)
 
@@ -27,12 +22,16 @@
 (setq use-package-minimum-reported-time 0
       use-package-verbose t)
 
+;;------------------------------------------------------------------------------
+;; benchmark-init
+(use-package benchmark-init
+  :ensure t)
+
 
 ;;------------------------------------------------------------------------------
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (load "miker-functions.el")
 (load "miker-keybind.el")
-;;(load "~/.emacs.d/magit/lisp/magit.el")
 
 
 ;;------------------------------------------------------------------------------
@@ -97,9 +96,9 @@
 (set-face-foreground 'git-gutter-fr:added "dark sea green")
 (set-face-foreground 'git-gutter-fr:deleted "tomato1")
 ;background
-(set-face-background 'git-gutter-fr:added  "wheat1")
-(set-face-background 'git-gutter-fr:deleted  "wheat1")
-(set-face-background 'git-gutter-fr:modified  "wheat1")
+(set-face-background 'git-gutter-fr:added  "SystemGrayText")
+(set-face-background 'git-gutter-fr:deleted  "SystemGrayText")
+(set-face-background 'git-gutter-fr:modified  "SystemGrayText")
 (global-git-gutter-mode)
 
 
@@ -168,3 +167,21 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; END my stuff /miker
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "c9321e2db48a21fc656a907e97ee85d8cd86967855bf0bed3998bcf9195c758b" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "b86c3de12c012593d19916ee6c9b1ac6f0cbb1fdf6237ead94e577867f1e9dd2" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(inhibit-startup-screen t)
+ '(package-selected-packages
+   (quote
+    (multiple-cursors yascroll use-package smart-mode-line move-text helm git-gutter-fringe clang-format))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -2,9 +2,6 @@
 ;;delete line with no kill ring
 (global-set-key (kbd "C-S-k") 'delete-line-no-kill)
 
-;;Buffer list
-(global-set-key (kbd "C-x l") 'list-buffers)
-
 ;;C-x F1 : Layout
 (global-set-key (kbd "C-x <f1>") 'my-two-buffer-layout)
 
@@ -16,6 +13,7 @@
 
 ;;multiple cursors
 (use-package multiple-cursors
+  :ensure t
   :bind
   ("C->" . mc/mark-next-like-this)
   ("C-<" . mc/mark-previous-like-this)
@@ -23,12 +21,11 @@
 
 
 ;;expand region
-(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-;") 'er/expand-region)
-
-
-;;delete line with no kill ring
-(global-set-key (kbd "C-S-k") 'delete-line-no-kill)
+(use-package expand-region
+  :ensure t
+  :bind
+  ("C-=" . er/expand-region)
+  ("C-;" . er/expand-region))
 
 ;;org-mode undbind
 (eval-after-load "org" '(define-key org-mode-map (kbd "C-,") nil))
