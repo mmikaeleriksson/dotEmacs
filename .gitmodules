@@ -1,0 +1,3 @@
+[submodule "lisp/liso-theme"]
+	path = lisp/liso-theme
+	url = https://github.com/caisah/liso-theme
