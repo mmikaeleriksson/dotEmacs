@@ -41,7 +41,6 @@
 (add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
 
 
-
 ;;------------------------------------------------------------------------------
 ;; Theme
 ;;(set-background-color "wheat2")
@@ -70,7 +69,6 @@
 (set-cursor-color "#C8FF03")
 
 
-
 ;;------------------------------------------------------------------------------
 ;;Auto-save and backup files saved in TEMP
 (setq backup-directory-alist
@@ -78,6 +76,7 @@
 (setq auto-save-file-name-transforms
       `((".*" ,"~/.autosaves" t)))
 (setq custom-file "~/.emacs.d/auto-custom.el")
+
 
 ;;------------------------------------------------------------------------------
 ;;Fringe git-gutter settings
@@ -104,7 +103,6 @@
 
 ;;------------------------------------------------------------------------------
 ;; No scroll bar
-(scroll-bar-mode -1)
 (set-face-background 'vertical-border "snow4")
 (set-face-foreground 'vertical-border (face-background 'vertical-border))
 
@@ -157,6 +155,7 @@
 ;;------------------------------------------------------------------------------
 ;; magit
 (use-package magit
+  :ensure t
   :after (magit))
 
 

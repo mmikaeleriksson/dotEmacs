@@ -2,3 +2,5 @@ elpa/
 auto-save-list/
 recentf
 auto-custom.el
+transient/
+server/
