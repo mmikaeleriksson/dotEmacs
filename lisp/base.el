@@ -49,6 +49,10 @@
 (add-hook 'electric-buffer-menu-mode-hook 'buffer-menu-custom-font-lock)
 
 
+;; change all prompts to y or n
+(fset 'yes-or-no-p 'y-or-n-p)
+
+
 ;; end/start of buffer
 (global-set-key (kbd "<end>") `end-of-buffer)
 (global-set-key (kbd "<home>") `beginning-of-buffer)

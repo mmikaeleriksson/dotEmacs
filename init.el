@@ -162,7 +162,15 @@
 ;;------------------------------------------------------------------------------
 ;; git-timemachine
 (use-package git-timemachine
+  :ensure t
   :after (git-timemachine))
+
+
+;;------------------------------------------------------------------------------
+;; web-mode
+(use-package web-mode
+  :ensure t
+  :mode ("\\.html\\'"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; END my stuff /miker
