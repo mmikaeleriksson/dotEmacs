@@ -1,4 +1,4 @@
 # dotEmacs
 ---
 
-mklink /D %appdata/.emacs.d 'repository location'
+mklink /D %appdata\.emacs.d 'repository location'
