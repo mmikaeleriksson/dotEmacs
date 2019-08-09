@@ -36,9 +36,12 @@
 
 ;;------------------------------------------------------------------------------
 ;;JS2 Mode
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-jsx-mode))
-(add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
+(use-package js2-mode
+  :ensure t)
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 
 ;;------------------------------------------------------------------------------
@@ -172,5 +175,23 @@
   :ensure t
   :mode ("\\.html\\'"))
 
+;;------------------------------------------------------------------------------
+;; org-bullets
+(use-package org-bullets
+ :ensure t
+ :init
+ (setq org-bullets-bullet-list
+  '("◉" "◎" "￼" "○" "►" "◇"))
+ :config
+ (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+;;------------------------------------------------------------------------------
+;; swiper-helm
+(use-package swiper-helm
+  :ensure t
+  :bind (
+  ([remap isearch-forward] . swiper-helm)
+  ([remap isearch-backward] . swiper-helm)
+  ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; END my stuff /miker
