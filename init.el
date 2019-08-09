@@ -9,7 +9,6 @@
 
 (package-initialize)
 (setq package-enable-at-startup nil)
-
 (unless package-archive-contents
   (message "Refreshing package archives...")
   (package-refresh-contents))
@@ -47,8 +46,10 @@
 ;;------------------------------------------------------------------------------
 ;; Theme
 ;;(set-background-color "wheat2")
-(load "liso-theme/liso-theme.el")
-
+(use-package chocolate-theme
+  :ensure t
+  :config
+  (load-theme 'chocolate t))
 
 ;;------------------------------------------------------------------------------
 ;; Add line at top of the buffer to show column length
