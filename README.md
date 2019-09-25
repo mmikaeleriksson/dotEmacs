@@ -1,5 +1,4 @@
 # dotEmacs
----
 
 #### For Windows:
 ```
