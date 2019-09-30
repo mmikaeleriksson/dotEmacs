@@ -156,6 +156,15 @@
 (setq-default show-trailing-whitespace t)
 
 
+
+;;------------------------------------------------------------------------------
+;; clang-format
+(use-package clang-format
+  :ensure t
+  :bind
+  (("C-c f" . clang-format)))
+
+
 ;;------------------------------------------------------------------------------
 ;; magit
 (use-package magit
@@ -182,17 +191,17 @@
  :ensure t
  :init
  (setq org-bullets-bullet-list
-  '("◉" "◎" "￼" "○" "►" "◇"))
+       '("ァ" "ィ" "ゥ" "ェ" "ォ"))
  :config
  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;;------------------------------------------------------------------------------
 ;; swiper-helm
-(use-package swiper-helm
+(use-package swiper
   :ensure t
-  :bind (
-  ([remap isearch-forward] . swiper-helm)
-  ([remap isearch-backward] . swiper-helm)
-  ))
+  :bind
+  ("C-c C-r" . swiper)
+  )
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; END my stuff /miker
