@@ -43,13 +43,21 @@
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 
+(add-to-list 'auto-mode-alist '("\\.ui\\'" . nxml-mode))
+
+
 ;;------------------------------------------------------------------------------
 ;; Theme
 ;;(set-background-color "wheat2")
-(use-package chocolate-theme
+;;(use-package chocolate-theme
+;;  :ensure t
+;;  :config
+;;  (load-theme 'chocolate t))
+
+(use-package dracula-theme
   :ensure t
   :config
-  (load-theme 'chocolate t))
+  (load-theme 'dracula t))
 
 ;;------------------------------------------------------------------------------
 ;; Add line at top of the buffer to show column length
@@ -210,6 +218,8 @@
 (setq-default c-basic-offset 4)
 (setq-default js2-indent-level 4)
 (setq-default sgml-basic-offset 4)
+(setq-default cmake-tab-width 4)
+(setq-default nxml-child-indent 4 nxml-attribute-indent 4)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; END my stuff /miker
