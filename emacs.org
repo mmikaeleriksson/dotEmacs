@@ -248,7 +248,7 @@ Switch between header and implementation file
   (switch-to-buffer
    "*scratch*")
 
-  (other-window 3)
+  (other-window 2)
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
 )
 #+END_SRC
@@ -276,7 +276,7 @@ Switch between header and implementation file
   (switch-to-buffer
    "*scratch*")
 
-  (other-window 3)
+  (other-window 2)
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
 )
 #+END_SRC
