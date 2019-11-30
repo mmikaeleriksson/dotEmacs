@@ -5,3 +5,9 @@ auto-custom.el
 transient/
 server/
 bookmarks
+%backup%~
+.mc-lists.el
+emacs.el
+org/
+session.*
+url/
