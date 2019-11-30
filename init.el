@@ -21,6 +21,7 @@
 (setq use-package-minimum-reported-time 0
       use-package-verbose t)
 
+
 ;;------------------------------------------------------------------------------
 ;; benchmark-init
 (use-package benchmark-init
@@ -31,6 +32,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (load "miker-functions.el")
 (load "miker-keybind.el")
+(load "base.el")
 
 
 ;;------------------------------------------------------------------------------
@@ -58,6 +60,8 @@
   :ensure t
   :config
   (load-theme 'dracula t))
+
+(set-face-attribute 'region nil :background "#342c6b" :foreground nil)
 
 ;;------------------------------------------------------------------------------
 ;; Add line at top of the buffer to show column length
@@ -122,8 +126,6 @@
   :ensure t)
 (global-yascroll-bar-mode 1)
 
-(load "base.el")
-
 
 ;;------------------------------------------------------------------------------
 ;; define you own browser function (which opens `eww' with the url)
@@ -153,11 +155,7 @@
 ;;Insert matching delimiters
 (electric-pair-mode 1)
 
-(defun my-inhibit-electric-pair-mode (char)
-  (minibufferp))
-
-(setq electric-pair-inhibit-predicate #'my-inhibit-electric-pair-mode)
-
+(setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
 
 ;;------------------------------------------------------------------------------
 ;;Show trailing whitespace

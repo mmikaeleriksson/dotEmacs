@@ -6,7 +6,10 @@
 (global-set-key (kbd "C-x <f1>") 'my-two-buffer-layout)
 
 ;;C-x F2 : Layout
-(global-set-key (kbd "C-x <f2>") 'my-five-buffer-layout)
+(global-set-key (kbd "C-x <f2>") 'my-three-buffer-layout)
+
+;;C-x F3 : Layout
+(global-set-key (kbd "C-x <f3>") 'my-five-buffer-layout)
 
 ;;eval-buffer shortcut
 (global-set-key (kbd "C-x e") (lambda () (interactive) (find-file "/om/user/miker/lisp/init.el") (eval-buffer) (previous-buffer)))
@@ -60,6 +63,10 @@
   :bind
   (("C-S-p" . move-text-up)
    ("C-S-n" . move-text-down)))
+
+;;cc-mode bind
+(eval-after-load "cc-mode"
+  '(define-key c++-mode-map (kbd "C-x m") 'ff-find-other-file))
 
 
 (provide 'miker-keybind)

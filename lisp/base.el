@@ -3,7 +3,7 @@
 
 ;; settings for new frames (thatis new window in windows, C-x 5 2)
 (setq default-frame-alist
-      '((font . "Roboto Mono-9")
+      '((font . "Fira Mono")
 	(vertical-scroll-bars . right)
 	(menu-bar-lines . 0)
 	(left-fringe . 0)

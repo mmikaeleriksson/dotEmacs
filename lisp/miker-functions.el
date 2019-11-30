@@ -22,6 +22,34 @@
 
 
 ;;------------------------------------------------------------------------------
+;;Split up 3 buffers
+(defun my-three-buffer-layout ()
+  (interactive)
+  (delete-other-windows)
+
+  (defadvice split-window-horizontally (after rebalance-windows activate)
+    (balance-windows))
+
+  (ad-activate 'split-window-horizontally)
+  (switch-to-buffer
+   "*scratch*")
+
+  (split-window-horizontally) ;; -> |
+  (next-multiframe-window)
+  (switch-to-buffer
+   "*scratch*")
+
+  (split-window-horizontally) ;; -> |
+  (next-multiframe-window)
+  (switch-to-buffer
+   "*scratch*")
+
+  (other-window 3)
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+)
+
+
+;;------------------------------------------------------------------------------
 ;;Split up 5 buffers
 (defun my-five-buffer-layout ()
   (interactive)
