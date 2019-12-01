@@ -210,7 +210,7 @@ Switch between header and implementation file
 (global-yascroll-bar-mode 1)
 #+END_SRC
 
-**** smart-mode-line
+*** smart-mode-line
 #+BEGIN_SRC emacs-lisp
 (use-package smart-mode-line
   :ensure t
@@ -335,17 +335,6 @@ Switch between header and implementation file
 (setq-default nxml-child-indent 4 nxml-attribute-indent 4)
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp
-;; fix indentation.
-(c-add-style "my-cpp-style"
-	     '("stroustrup"
-	       (c-offsets-alist
-		(innamespace . -)
-		(inline-open . 0)
-		(access-label . -3))))
-(setq c-default-style "my-cpp-style")
-#+END_SRC
-***** TODO Remove my-cpp-style?
 * Packages
 ** Clang-format
 #+BEGIN_SRC emacs-lisp
@@ -425,7 +414,6 @@ Switch between header and implementation file
 (use-package which-key
   :ensure t)
 (which-key-mode)
-#+END_SRC
 #+END_SRC
 * Org
 ** Unbind

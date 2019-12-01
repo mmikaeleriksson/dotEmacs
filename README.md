@@ -1,60 +1,61 @@
 
 # Table of Contents
 
-1.  [Package setup](#org5ea4485)
-2.  [Benchmark](#org7c5eb0e)
-3.  [Basic](#org01f9580)
-    1.  [Annotate fix](#orgdb216fa)
-    2.  [Skip gui](#org2df3793)
-    3.  [Enables show-paren-mode](#orgb29e7d8)
-    4.  [Auto-save and backup files saved in TEMP](#org4fe7ca1)
-    5.  [Change all prompts to y or n](#org7c20b7e)
-    6.  [settings for new frames (that is new window in windows, C-x 5 2)](#orgae3b35c)
-4.  [Modes](#org4874b0b)
-    1.  [js2-mode](#orge9bb50f)
-    2.  [nxml-mode](#org9455ec1)
-    3.  [web-mode](#org8f92709)
-    4.  [cc-mode](#orgea98b5a)
-5.  [Functions](#orgfb50a17)
-    1.  [define you own browser function (which opens \`eww' with the url)](#org7f4d185)
-    2.  [Override alt-backspace](#org5aa1761)
-    3.  [Delete line (without kill-ring) (Ctrl-Shift-K)](#org0c12a3b)
-6.  [Look and feel](#org61b011c)
-    1.  [Theme](#org7b02ddb)
-        1.  [chocolate-theme](#org95f67ae)
-        2.  [dracula-theme](#orgc83f03f)
-    2.  [Layout](#org84b7d43)
-        1.  [Add line at top of the buffer to show column length](#orga20be98)
-        2.  [Fringe git-gutter settings](#orgab6fa73)
-        3.  [yascroll 'no scroll bar'](#orgd45716c)
-        4.  [Layout functions](#orgf2a8292)
-    3.  [Input](#orgdaa3d8c)
-        1.  [Insert matching delimiters](#org0aebb88)
-        2.  [Indentation](#org40be427)
-7.  [Packages](#org425bbe5)
-    1.  [Clang-format](#orgdedaeac)
-    2.  [Magit](#org5625140)
-    3.  [git-timemachine](#org038373c)
-    4.  [swiper](#orgc128024)
-    5.  [multiple-cursors](#orga82cb6b)
-    6.  [helm](#org0c6cc3e)
-    7.  [expand-region](#org588acd1)
-    8.  [move-text](#orgc95c359)
-    9.  [which-key](#org6942e18)
-8.  [Org](#org9915793)
-    1.  [Unbind](#org6271373)
-    2.  [org-agenda](#org5c02210)
-    3.  [org-bullets](#orgf90b593)
-9.  [Keybinds](#orgc0a4fbb)
-    1.  [delete line with no kill ring](#org6233780)
-    2.  [C-x F<n> : Layout](#orgf3e1f9c)
-    3.  [end/start of buffer](#orgcb285a2)
-    4.  [Switch buffers](#org706334a)
-10. [Kept from old config](#org220fc60)
+1.  [Package setup](#org14b46ee)
+2.  [Benchmark](#org585a720)
+3.  [Basic](#org0c7e9e3)
+    1.  [Annotate fix](#org3f41abe)
+    2.  [Skip gui](#orgefb4ab9)
+    3.  [Enables show-paren-mode](#org8c1033a)
+    4.  [Auto-save and backup files saved in TEMP](#orgc999f56)
+    5.  [Change all prompts to y or n](#orge5ae9e1)
+    6.  [settings for new frames (that is new window in windows, C-x 5 2)](#org5044f61)
+4.  [Modes](#org6b8c1a3)
+    1.  [js2-mode](#org2dfe099)
+    2.  [nxml-mode](#org29e2898)
+    3.  [web-mode](#orgc15ca20)
+    4.  [cc-mode](#org7dcc81f)
+5.  [Functions](#org8cf22bc)
+    1.  [define you own browser function (which opens \`eww' with the url)](#orgb50ea93)
+    2.  [Override alt-backspace](#org510175e)
+    3.  [Delete line (without kill-ring) (Ctrl-Shift-K)](#org341de1d)
+6.  [Look and feel](#orgb225f77)
+    1.  [Theme](#orgb05a347)
+        1.  [chocolate-theme](#orgcfe19d5)
+        2.  [dracula-theme](#orgfd3d0bc)
+    2.  [Layout](#orgdab0d29)
+        1.  [Add line at top of the buffer to show column length](#org634c1cc)
+        2.  [Fringe git-gutter settings](#orge0bb567)
+        3.  [yascroll 'no scroll bar'](#org33249ef)
+        4.  [smart-mode-line](#org874866d)
+        5.  [Layout functions](#org0b59e13)
+    3.  [Input](#org3aa3ae8)
+        1.  [Insert matching delimiters](#org51ca271)
+        2.  [Indentation](#orgd0bc1f1)
+7.  [Packages](#orgb78643e)
+    1.  [Clang-format](#orgaf2b329)
+    2.  [Magit](#orge1a99ac)
+    3.  [git-timemachine](#org94ba5cb)
+    4.  [swiper](#org771a468)
+    5.  [multiple-cursors](#orga356933)
+    6.  [helm](#org176852c)
+    7.  [expand-region](#org9127a45)
+    8.  [move-text](#org981e36e)
+    9.  [which-key](#org405fd80)
+8.  [Org](#org191c1bc)
+    1.  [Unbind](#orge53cd23)
+    2.  [org-agenda](#org9738aca)
+    3.  [org-bullets](#org64a1e22)
+9.  [Keybinds](#orgded46ae)
+    1.  [delete line with no kill ring](#org4f663d1)
+    2.  [C-x F<n> : Layout](#org41afa40)
+    3.  [end/start of buffer](#org11b61ec)
+    4.  [Switch buffers](#org042b83c)
+10. [Kept from old config](#org458dd34)
 
 
 
-<a id="org5ea4485"></a>
+<a id="org14b46ee"></a>
 
 # Package setup
 
@@ -80,7 +81,7 @@
           use-package-verbose t)
 
 
-<a id="org7c5eb0e"></a>
+<a id="org585a720"></a>
 
 # Benchmark
 
@@ -88,12 +89,12 @@
      :ensure t)
 
 
-<a id="org01f9580"></a>
+<a id="org0c7e9e3"></a>
 
 # Basic
 
 
-<a id="orgdb216fa"></a>
+<a id="org3f41abe"></a>
 
 ## Annotate fix
 
@@ -104,7 +105,7 @@
     )
 
 
-<a id="org2df3793"></a>
+<a id="orgefb4ab9"></a>
 
 ## Skip gui
 
@@ -118,7 +119,7 @@
     (setq inhibit-splash-screen t)
 
 
-<a id="orgb29e7d8"></a>
+<a id="org8c1033a"></a>
 
 ## Enables show-paren-mode
 
@@ -126,7 +127,7 @@
     (show-paren-mode 1)
 
 
-<a id="org4fe7ca1"></a>
+<a id="orgc999f56"></a>
 
 ## Auto-save and backup files saved in TEMP
 
@@ -137,14 +138,14 @@
     (setq custom-file "~/.emacs.d/auto-custom.el")
 
 
-<a id="org7c20b7e"></a>
+<a id="orge5ae9e1"></a>
 
 ## Change all prompts to y or n
 
     (fset 'yes-or-no-p 'y-or-n-p)
 
 
-<a id="orgae3b35c"></a>
+<a id="org5044f61"></a>
 
 ## settings for new frames (that is new window in windows, C-x 5 2)
 
@@ -155,12 +156,12 @@
             (left-fringe . 0)))
 
 
-<a id="org4874b0b"></a>
+<a id="org6b8c1a3"></a>
 
 # Modes
 
 
-<a id="orge9bb50f"></a>
+<a id="org2dfe099"></a>
 
 ## js2-mode
 
@@ -172,14 +173,14 @@
     (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 
-<a id="org9455ec1"></a>
+<a id="org29e2898"></a>
 
 ## nxml-mode
 
     (add-to-list 'auto-mode-alist '("\\.ui\\'" . nxml-mode))
 
 
-<a id="org8f92709"></a>
+<a id="orgc15ca20"></a>
 
 ## web-mode
 
@@ -188,7 +189,7 @@
       :mode ("\\.html\\'"))
 
 
-<a id="orgea98b5a"></a>
+<a id="org7dcc81f"></a>
 
 ## cc-mode
 
@@ -198,12 +199,12 @@ Switch between header and implementation file
       '(define-key c++-mode-map (kbd "C-x m") 'ff-find-other-file))
 
 
-<a id="orgfb50a17"></a>
+<a id="org8cf22bc"></a>
 
 # Functions
 
 
-<a id="org7f4d185"></a>
+<a id="orgb50ea93"></a>
 
 ## define you own browser function (which opens \`eww' with the url)
 
@@ -214,7 +215,7 @@ Switch between header and implementation file
     (setq browse-url-browser-function 'my-browse-url-browser-function)
 
 
-<a id="org5aa1761"></a>
+<a id="org510175e"></a>
 
 ## Override alt-backspace
 
@@ -224,7 +225,7 @@ Switch between header and implementation file
     (global-set-key (kbd "M-<backspace>") 'backward-delete-word)
 
 
-<a id="org0c12a3b"></a>
+<a id="org341de1d"></a>
 
 ## Delete line (without kill-ring) (Ctrl-Shift-K)
 
@@ -238,17 +239,17 @@ Switch between header and implementation file
     )
 
 
-<a id="org61b011c"></a>
+<a id="orgb225f77"></a>
 
 # Look and feel
 
 
-<a id="org7b02ddb"></a>
+<a id="orgb05a347"></a>
 
 ## Theme
 
 
-<a id="org95f67ae"></a>
+<a id="orgcfe19d5"></a>
 
 ### chocolate-theme
 
@@ -259,7 +260,7 @@ Switch between header and implementation file
     ;;  (load-theme 'chocolate t))
 
 
-<a id="orgc83f03f"></a>
+<a id="orgfd3d0bc"></a>
 
 ### dracula-theme
 
@@ -271,12 +272,12 @@ Switch between header and implementation file
     (set-face-attribute 'region nil :background "#342c6b" :foreground nil)
 
 
-<a id="org84b7d43"></a>
+<a id="orgdab0d29"></a>
 
 ## Layout
 
 
-<a id="orga20be98"></a>
+<a id="org634c1cc"></a>
 
 ### Add line at top of the buffer to show column length
 
@@ -289,7 +290,7 @@ Switch between header and implementation file
     (set-cursor-color "#C8FF03")
 
 
-<a id="orgab6fa73"></a>
+<a id="orge0bb567"></a>
 
 ### Fringe git-gutter settings
 
@@ -314,7 +315,7 @@ Switch between header and implementation file
     (global-git-gutter-mode)
 
 
-<a id="orgd45716c"></a>
+<a id="org33249ef"></a>
 
 ### yascroll 'no scroll bar'
 
@@ -326,23 +327,26 @@ Switch between header and implementation file
       :ensure t)
     (global-yascroll-bar-mode 1)
 
-1.  smart-mode-line
 
-        (use-package smart-mode-line
-          :ensure t
-          :config
-          (setq sml/theme nil)
-          (setq sml/directory-truncation-string ".../")
-          (setq sml/shorten-directory t)
-          (setq sml/shorten-modes t)
-          (setq sml/name-width 40)
-          (setq sml/mode-width 40))
-        (sml/setup)
-    
-        (setq-default show-trailing-whitespace t)
+<a id="org874866d"></a>
+
+### smart-mode-line
+
+    (use-package smart-mode-line
+      :ensure t
+      :config
+      (setq sml/theme nil)
+      (setq sml/directory-truncation-string ".../")
+      (setq sml/shorten-directory t)
+      (setq sml/shorten-modes t)
+      (setq sml/name-width 40)
+      (setq sml/mode-width 40))
+    (sml/setup)
+
+    (setq-default show-trailing-whitespace t)
 
 
-<a id="orgf2a8292"></a>
+<a id="org0b59e13"></a>
 
 ### Layout functions
 
@@ -433,12 +437,12 @@ Switch between header and implementation file
         )
 
 
-<a id="orgdaa3d8c"></a>
+<a id="org3aa3ae8"></a>
 
 ## Input
 
 
-<a id="org0aebb88"></a>
+<a id="org51ca271"></a>
 
 ### Insert matching delimiters
 
@@ -446,7 +450,7 @@ Switch between header and implementation file
     (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
 
 
-<a id="org40be427"></a>
+<a id="orgd0bc1f1"></a>
 
 ### Indentation
 
@@ -458,25 +462,14 @@ Switch between header and implementation file
         (setq-default sgml-basic-offset 4)
         (setq-default cmake-tab-width 4)
         (setq-default nxml-child-indent 4 nxml-attribute-indent 4)
-    
-        ;; fix indentation.
-        (c-add-style "my-cpp-style"
-                     '("stroustrup"
-                       (c-offsets-alist
-                        (innamespace . -)
-                        (inline-open . 0)
-                        (access-label . -3))))
-        (setq c-default-style "my-cpp-style")
-    
-    1.  TODO Remove my-cpp-style?
 
 
-<a id="org425bbe5"></a>
+<a id="orgb78643e"></a>
 
 # Packages
 
 
-<a id="orgdedaeac"></a>
+<a id="orgaf2b329"></a>
 
 ## Clang-format
 
@@ -486,7 +479,7 @@ Switch between header and implementation file
       (("C-c f" . clang-format)))
 
 
-<a id="org5625140"></a>
+<a id="orge1a99ac"></a>
 
 ## Magit
 
@@ -495,7 +488,7 @@ Switch between header and implementation file
       :after (magit))
 
 
-<a id="org038373c"></a>
+<a id="org94ba5cb"></a>
 
 ## git-timemachine
 
@@ -504,7 +497,7 @@ Switch between header and implementation file
       :after (git-timemachine))
 
 
-<a id="orgc128024"></a>
+<a id="org771a468"></a>
 
 ## swiper
 
@@ -515,7 +508,7 @@ Switch between header and implementation file
       )
 
 
-<a id="orga82cb6b"></a>
+<a id="orga356933"></a>
 
 ## multiple-cursors
 
@@ -528,7 +521,7 @@ Switch between header and implementation file
     )
 
 
-<a id="org0c6cc3e"></a>
+<a id="org176852c"></a>
 
 ## helm
 
@@ -549,7 +542,7 @@ Switch between header and implementation file
        ("C-c g" . my-helm-grep-do-git-grep)))
 
 
-<a id="org588acd1"></a>
+<a id="org9127a45"></a>
 
 ## expand-region
 
@@ -560,7 +553,7 @@ Switch between header and implementation file
       ("C-;" . er/expand-region))
 
 
-<a id="orgc95c359"></a>
+<a id="org981e36e"></a>
 
 ## move-text
 
@@ -571,7 +564,7 @@ Switch between header and implementation file
        ("C-S-n" . move-text-down)))
 
 
-<a id="org6942e18"></a>
+<a id="org405fd80"></a>
 
 ## which-key
 
@@ -579,15 +572,13 @@ Switch between header and implementation file
       :ensure t)
     (which-key-mode)
 
-\#+END<sub>SRC</sub>
 
-
-<a id="org9915793"></a>
+<a id="org191c1bc"></a>
 
 # Org
 
 
-<a id="org6271373"></a>
+<a id="orge53cd23"></a>
 
 ## Unbind
 
@@ -598,7 +589,7 @@ C-c C-r is reserved for swiper
     (eval-after-load "org" '(define-key org-mode-map (kbd "C-c C-r") nil))
 
 
-<a id="org5c02210"></a>
+<a id="org9738aca"></a>
 
 ## org-agenda
 
@@ -609,7 +600,7 @@ Set org-agenda files
     "~/.emacs.d/emacs.org"))
 
 
-<a id="orgf90b593"></a>
+<a id="org64a1e22"></a>
 
 ## org-bullets
 
@@ -622,19 +613,19 @@ Set org-agenda files
      (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 
-<a id="orgc0a4fbb"></a>
+<a id="orgded46ae"></a>
 
 # Keybinds
 
 
-<a id="org6233780"></a>
+<a id="org4f663d1"></a>
 
 ## delete line with no kill ring
 
     (global-set-key (kbd "C-S-k") 'delete-line-no-kill)
 
 
-<a id="orgf3e1f9c"></a>
+<a id="org41afa40"></a>
 
 ## C-x F<n> : Layout
 
@@ -647,7 +638,7 @@ Set org-agenda files
     (global-set-key (kbd "C-x <f3>") 'my-five-buffer-layout)
 
 
-<a id="orgcb285a2"></a>
+<a id="org11b61ec"></a>
 
 ## end/start of buffer
 
@@ -655,7 +646,7 @@ Set org-agenda files
     (global-set-key (kbd "<home>") `beginning-of-buffer)
 
 
-<a id="org706334a"></a>
+<a id="org042b83c"></a>
 
 ## Switch buffers
 
@@ -670,7 +661,7 @@ Set org-agenda files
     (select-window (next-window))))
 
 
-<a id="org220fc60"></a>
+<a id="org458dd34"></a>
 
 # Kept from old config
 
