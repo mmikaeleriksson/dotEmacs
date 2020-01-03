@@ -31,6 +31,7 @@
  (use-package benchmark-init
   :ensure t)
 #+END_SRC
+
 * Basic
 ** Annotate fix
 #+BEGIN_SRC emacs-lisp
@@ -62,9 +63,7 @@
 ** Auto-save and backup files saved in TEMP
 #+BEGIN_SRC emacs-lisp
 (setq backup-directory-alist
-      `((".*" . ,"~/.backups")))
-(setq auto-save-file-name-transforms
-      `((".*" ,"~/.autosaves" t)))
+      `((".*" . ,"~/.saves")))
 (setq custom-file "~/.emacs.d/auto-custom.el")
 #+END_SRC
 
@@ -112,26 +111,17 @@ Switch between header and implementation file
   '(define-key c++-mode-map (kbd "C-x m") 'ff-find-other-file))
 #+END_SRC
 * Functions
-** define you own browser function (which opens `eww' with the url)
-#+BEGIN_SRC emacs-lisp
-(defun my-browse-url-browser-function (url &rest args)
-  (eww url))
-
-;; activate your own browser function
-(setq browse-url-browser-function 'my-browse-url-browser-function)
-#+END_SRC
-
 ** Override alt-backspace
 #+BEGIN_SRC emacs-lisp
-(defun backward-delete-word (arg)
+(defun miker/backward-delete-word (arg)
   (interactive "p")
   (delete-region (point) (progn (backward-word arg) (point))))
-(global-set-key (kbd "M-<backspace>") 'backward-delete-word)
+(global-set-key (kbd "M-<backspace>") 'miker/backward-delete-word)
 #+END_SRC
 
 ** Delete line (without kill-ring) (Ctrl-Shift-K)
 #+BEGIN_SRC emacs-lisp
-(defun delete-line-no-kill ()
+(defun miker/delete-line-no-kill ()
   (interactive)
   (delete-region
    (point)
@@ -139,6 +129,7 @@ Switch between header and implementation file
   (delete-char 1)
   (open-line 1)
 )
+(global-set-key (kbd "C-S-k") 'miker/delete-line-no-kill)
 #+END_SRC
 
 * Look and feel
@@ -212,18 +203,19 @@ Switch between header and implementation file
 
 *** smart-mode-line
 #+BEGIN_SRC emacs-lisp
-(use-package smart-mode-line
-  :ensure t
-  :config
-  (setq sml/theme nil)
-  (setq sml/directory-truncation-string ".../")
-  (setq sml/shorten-directory t)
-  (setq sml/shorten-modes t)
-  (setq sml/name-width 40)
-  (setq sml/mode-width 40))
-(sml/setup)
+;(use-package smart-mode-line
+;  :ensure t
+;  :config
+;  (setq sml/theme nil)
+;  (setq sml/directory-truncation-string ".../")
+;  (setq sml/shorten-directory t)
+;  (setq sml/shorten-modes t)
+;  (setq sml/name-width 40)
+;  (setq sml/mode-width 40))
+;(sml/setup)
 #+END_SRC
 
+*** Trailing whitespaces
 #+BEGIN_SRC emacs-lisp
 (setq-default show-trailing-whitespace t)
 #+END_SRC
@@ -231,7 +223,7 @@ Switch between header and implementation file
 *** Layout functions
 **** Split up 2 buffers
 #+BEGIN_SRC emacs-lisp
-(defun my-two-buffer-layout ()
+(defun miker/two-buffer-layout ()
   (interactive)
   (delete-other-windows)
 
@@ -250,11 +242,12 @@ Switch between header and implementation file
   (other-window 2)
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
 )
+(global-set-key (kbd "C-x <f1>") 'miker/two-buffer-layout)
 #+END_SRC
 
 **** Split up 3 buffers
 #+BEGIN_SRC emacs-lisp
-(defun my-three-buffer-layout ()
+(defun miker/three-buffer-layout ()
   (interactive)
   (delete-other-windows)
 
@@ -278,11 +271,12 @@ Switch between header and implementation file
   (other-window 2)
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
 )
+(global-set-key (kbd "C-x <f2>") 'miker/three-buffer-layout)
 #+END_SRC
 
 **** Split up 5 buffers
 #+BEGIN_SRC emacs-lisp
-(defun my-five-buffer-layout ()
+(defun miker/five-buffer-layout ()
   (interactive)
   (delete-other-windows)
 
@@ -316,6 +310,14 @@ Switch between header and implementation file
   (other-window 3)
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
 )
+(global-set-key (kbd "C-x <f3>") 'miker/five-buffer-layout)
+#+END_SRC
+
+*** display-time-mode
+#+BEGIN_SRC emacs-lisp
+(setq display-time-24hr-format t)
+(setq display-time-format "(%H:%M %e/%m)")
+(display-time-mode 1)
 #+END_SRC
 
 ** Input
@@ -325,7 +327,6 @@ Switch between header and implementation file
 (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
 #+END_SRC
 *** Indentation
-**** Indentation settings
 #+BEGIN_SRC emacs-lisp
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
@@ -357,6 +358,7 @@ Switch between header and implementation file
   :ensure t
   :after (git-timemachine))
 #+END_SRC
+
 ** swiper
 #+BEGIN_SRC emacs-lisp
 (use-package swiper
@@ -365,6 +367,7 @@ Switch between header and implementation file
   ("C-c C-r" . swiper)
   )
 #+END_SRC
+
 ** multiple-cursors
 #+BEGIN_SRC emacs-lisp
 (use-package multiple-cursors
@@ -375,6 +378,7 @@ Switch between header and implementation file
   ("C-c C-<" . 'mc/mark-all-like-this)
 )
 #+END_SRC
+
 ** helm
 #+BEGIN_SRC emacs-lisp
 (use-package helm
@@ -382,7 +386,7 @@ Switch between header and implementation file
   :config
   (setq helm-always-two-windows nil)
   (setq helm-split-window-default-side 'same)
-  (defun my-helm-grep-do-git-grep (not-all)
+  (defun miker/helm-grep-do-git-grep (not-all)
     (interactive "P")
     (helm-grep-git-1 default-directory (null not-all)))
   :bind
@@ -391,8 +395,9 @@ Switch between header and implementation file
    ("C-x C-f" . helm-find-files)
    ("M-x" . helm-M-x)
    ("M-y" . helm-show-kill-ring)
-   ("C-c g" . my-helm-grep-do-git-grep)))
+   ("C-c g" . miker/helm-grep-do-git-grep)))
 #+END_SRC
+
 ** expand-region
 #+BEGIN_SRC emacs-lisp
 (use-package expand-region
@@ -401,6 +406,7 @@ Switch between header and implementation file
   ("C-=" . er/expand-region)
   ("C-;" . er/expand-region))
 #+END_SRC
+
 ** move-text
 #+BEGIN_SRC emacs-lisp
 (use-package move-text
@@ -409,12 +415,136 @@ Switch between header and implementation file
   (("C-S-p" . move-text-up)
    ("C-S-n" . move-text-down)))
 #+END_SRC
+
 ** which-key
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
   :ensure t)
 (which-key-mode)
 #+END_SRC
+
+** doom-modeline
+#+BEGIN_SRC emacs-lisp
+(use-package all-the-icons)
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-init)
+)
+#+END_SRC
+
+* EXWM
+  :PROPERTIES:
+  :header-args: :tangle no
+  :END:
+
+  tangle yes/no to enable/disable EXWM
+
+** Add wm
+#+BEGIN_SRC
+  cd /usr/share/xsessions
+  touch emacs.desktop
+#+END_SRC
+
+  Add to emacs.desktop:
+#+BEGIN_SRC
+  [Desktop Entry]
+  Name=EXWM
+  Comment=Emacs window manager
+  Exec=emacs
+  Type=Application
+#+END_SRC
+
+** exwm-package
+#+BEGIN_SRC emacs-lisp
+(use-package exwm
+  :ensure t
+  :config
+  (require 'exwm-config)
+  (exwm-config-default)
+)
+#+END_SRC
+
+** dmenu
+#+BEGIN_SRC emacs-lisp
+(use-package dmenu
+  :ensure t
+  :bind
+  ("s-SPC" . 'dmenu))
+#+END_SRC
+
+** systemtray
+#+BEGIN_SRC emacs-lisp
+(require 'exwm-systemtray)
+(exwm-systemtray-enable)
+#+END_SRC
+
+** randr
+#+BEGIN_SRC emacs-lisp
+(require 'exwm-randr)
+(setq exwm-randr-workspace-output-plist
+'(0 "DVI-D-0" 1 "DP-2"))
+(exwm-randr-enable)
+#+END_SRC
+
+Added in /home/<user>/.profile :
+xrandr --output DP-2 --primary --mode 2560x1440 --rate 143.96
+xrandr --output DVI-D-0 --mode 1920x1080 --rotate right --left-of DP-2
+
+Run xrandr in term to see current settings
+
+** enable XF86
+#+BEGIN_SRC emacs-lisp
+(dolist (k '(XF86AudioLowerVolume
+             XF86AudioRaiseVolume
+             XF86PowerOff
+             XF86AudioMute
+             XF86AudioPlay
+             XF86AudioStop
+             XF86AudioPrev
+             XF86AudioNext
+             XF86ScreenSaver
+             XF68Back
+             XF86Forward
+             Scroll_Lock
+             print)))
+#+END_SRC
+
+** keybinds
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "s-k") 'exwm-workspace-delete)
+(global-set-key (kbd "s-w") 'exwm-workspace-swap)
+
+(global-set-key (kbd "<XF86ScreenSaver>") 'miker/launch-lock-screen)
+(global-set-key (kbd "<XF86PowerOff>") 'miker/launch-shutdown)
+#+END_SRC
+
+** volume
+#+BEGIN_SRC emacs-lisp
+(defconst volumeModifier "4")
+
+(defun audio/mute ()
+  (interactive)
+  (start-process "audio-mute" nil "pulsemixer" "--toggle-mute"))
+
+(defun audio/raise-volume ()
+  (interactive)
+  (start-process "raise-volume" nil "pulsemixer" "--change-volume" (concat "+" volumeModifier)))
+
+(defun audio/lower-volume ()
+  (interactive)
+  (start-process "lower-volume" nil "pulsemixer" "--change-volume" (concat "-" volumeModifier)))
+
+(global-set-key (kbd "<XF86AudioMute>") 'audio/mute)
+(global-set-key (kbd "<XF86AudioRaiseVolume>") 'audio/raise-volume)
+(global-set-key (kbd "<XF86AudioLowerVolume>") 'audio/lower-volume)
+#+END_SRC
+
+** default browser
+#+BEGIN_SRC emacs-lisp
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
+#+END_SRC
+
 * Org
 ** Unbind
 C-, is reserved for switching buffers
@@ -443,22 +573,6 @@ Set org-agenda files
  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
 * Keybinds
-** delete line with no kill ring
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-S-k") 'delete-line-no-kill)
-#+END_SRC
-
-** C-x F<n> : Layout
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-x <f1>") 'my-two-buffer-layout)
-
-;;C-x F2 : Layout
-(global-set-key (kbd "C-x <f2>") 'my-three-buffer-layout)
-
-;;C-x F3 : Layout
-(global-set-key (kbd "C-x <f3>") 'my-five-buffer-layout)
-#+END_SRC
-
 ** end/start of buffer
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "<end>") `end-of-buffer)
@@ -477,29 +591,3 @@ Set org-agenda files
 (interactive)
 (select-window (next-window))))
 #+END_SRC
-
-* Kept from old config
-(setq same-window-regexps '("\\`\\*Customiz.*\\*\\'" "\\*cvs[az-]*\\*"))
-
-
-(setq buffer-menu-buffer-font-lock-keywords
-      '(("^....*TAGS.*" . font-lock-comment-face)
-        ("^....[*].*" . font-lock-keyword-face)
-        ("^.[%].*" . font-lock-string-face)))
-
-(defun buffer-menu-custom-font-lock ()
-  (let ((font-lock-unfontify-region-function
-	 (lambda (start end)
-	   (remove-text-properties start end '(font-lock-face nil)))))
-    (font-lock-unfontify-buffer)
-    (set (make-local-variable 'font-lock-defaults)
-	 '(buffer-menu-buffer-font-lock-keywords t))
-    (font-lock-fontify-buffer)))
-
-(add-hook 'electric-buffer-menu-mode-hook 'buffer-menu-custom-font-lock)
-
-
-;; auto-mode-alist
-(add-to-list 'auto-mode-alist '("makefile$" . makefile-mode))
-(add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.ih$" . c++-mode))
