@@ -11,3 +11,4 @@ emacs.el
 org/
 session.*
 url/
+dmenu-items

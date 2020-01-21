@@ -132,6 +132,15 @@ Switch between header and implementation file
 (global-set-key (kbd "C-S-k") 'miker/delete-line-no-kill)
 #+END_SRC
 
+** isearch-query-replace-symbol-at-point (M-s %)
+#+BEGIN_SRC emacs-lisp
+(defun miker/isearch-query-replace-symbol-at-point ()
+(interactive)
+(isearch-forward-symbol-at-point)
+(isearch-query-replace-regexp)
+)
+(global-set-key (kbd "M-s %") 'miker/isearch-query-replace-symbol-at-point)
+#+END_SRC
 * Look and feel
 ** Theme
 *** chocolate-theme
@@ -335,7 +344,10 @@ Switch between header and implementation file
 (setq-default cmake-tab-width 4)
 (setq-default nxml-child-indent 4 nxml-attribute-indent 4)
 #+END_SRC
-
+*** I-search
+#+BEGIN_SRC emacs-lisp
+(setq search-whitespace-regexp ".*?")
+#+END_SRC
 * Packages
 ** Clang-format
 #+BEGIN_SRC emacs-lisp
@@ -432,6 +444,17 @@ Switch between header and implementation file
 )
 #+END_SRC
 
+** minimap
+#+BEGIN_SRC emacs-lisp
+(use-package minimap
+  :ensure t
+  :custom
+  (minimap-window-location 'right)
+  :config
+  ;;dracula color
+  (set-face-attribute 'minimap-active-region-background nil :background "#342c6b")
+)
+#+END_SRC
 * EXWM
   :PROPERTIES:
   :header-args: :tangle no
