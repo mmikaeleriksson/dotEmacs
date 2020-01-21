@@ -580,9 +580,18 @@ C-c C-r is reserved for swiper
 ** org-agenda
 Set org-agenda files
 #+BEGIN_SRC emacs-lisp
-(setq org-agenda-files (list
-"~/.emacs.d/org/"
-"~/.emacs.d/emacs.org"))
+(setq org-agenda-files
+    (apply 'append
+        (mapcar
+	    (lambda (directory)
+	        (directory-files-recursively
+		directory org-agenda-file-regexp)
+            )
+	    '("~/.emacs.d/"
+            "~/Documents/Private/")
+         )
+    )
+)
 #+END_SRC
 
 ** org-bullets
