@@ -577,21 +577,42 @@ C-c C-r is reserved for swiper
 (eval-after-load "org" '(define-key org-mode-map (kbd "C-c C-r") nil))
 #+END_SRC
 
-** org-agenda
+** org-super-agenda
 Set org-agenda files
 #+BEGIN_SRC emacs-lisp
-(setq org-agenda-files
-    (apply 'append
-        (mapcar
-	    (lambda (directory)
+(use-package org-super-agenda
+  :ensure t
+  :init
+  (setq org-super-agenda-groups
+	'((:name "Deadline"
+		 :deadline t
+		 :order 1)
+	  (:name "Prio A"
+		 :priority "A"
+		 :order 2)
+	  (:name "Prio B"
+		 :priority "B"
+		 :order 3)
+	  (:name "Prio C"
+		 :priority "C"
+		 :order 4)
+	  )
+	)
+  :config
+  (org-super-agenda-mode)
+  (setq org-agenda-files
+      (apply 'append
+             (mapcar
+	      (lambda (directory)
 	        (directory-files-recursively
-		directory org-agenda-file-regexp)
-            )
-	    '("~/.emacs.d/"
-            "~/Documents/Private/")
-         )
-    )
-)
+		 directory org-agenda-file-regexp)
+		)
+	      '("~/.emacs.d/"
+              "~/Documents/Private/")
+              )
+             )
+      )
+  )
 #+END_SRC
 
 ** org-bullets
@@ -604,6 +625,15 @@ Set org-agenda files
  :config
  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
+
+** tags
+#+BEGIN_SRC emacs-lisp
+(setq org-tag-alist '(("@TRAVEL" . ?t)
+                      ("@WEBSITE" . ?w)
+                      ("@OREGON2020")
+		      ))
+#+END_SRC
+
 * Keybinds
 ** end/start of buffer
 #+BEGIN_SRC emacs-lisp
