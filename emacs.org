@@ -577,6 +577,12 @@ C-c C-r is reserved for swiper
 (eval-after-load "org" '(define-key org-mode-map (kbd "C-c C-r") nil))
 #+END_SRC
 
+** org-todo-keywords
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+      '((sequence "TODO(t!)" "BUY(b!)" "BOOK(k!)" "LOOKUP(l!)" "|" "DONE(d!)")))
+#+END_SRC
+
 ** org-super-agenda
 Set org-agenda files
 #+BEGIN_SRC emacs-lisp
@@ -587,16 +593,18 @@ Set org-agenda files
 	'((:name "Deadline"
 		 :deadline t
 		 :order 1)
-	  (:name "Prio A"
-		 :priority "A"
+	  (:name "Todo"
+		 :todo ("TODO")
 		 :order 2)
-	  (:name "Prio B"
-		 :priority "B"
+	  (:name "Book"
+		 :todo ("BOOK")
 		 :order 3)
-	  (:name "Prio C"
-		 :priority "C"
+	  (:name "Lookup"
+		 :todo ("LOOKUP")
 		 :order 4)
-	  )
+	  (:name "Buy"
+		 :todo ("BUY")
+		 :order 5))
 	)
   :config
   (org-super-agenda-mode)
@@ -630,8 +638,14 @@ Set org-agenda files
 #+BEGIN_SRC emacs-lisp
 (setq org-tag-alist '(("@TRAVEL" . ?t)
                       ("@WEBSITE" . ?w)
+                      ("KEYBOARD" . ?k)
                       ("@OREGON2020")
 		      ))
+#+END_SRC
+
+** custom
+#+BEGIN_SRC emacs-lisp
+(setq org-log-done 'time)
 #+END_SRC
 
 * Keybinds
