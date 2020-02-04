@@ -645,7 +645,46 @@ Set org-agenda files
 
 ** custom
 #+BEGIN_SRC emacs-lisp
-(setq org-log-done 'time)
+(setq org-capture-templates '(
+                              ("t" "Todo")
+                              ("tt" "Todo" entry
+                               (file+headline
+                               "~/Documents/Private/todo.org" "Todo")
+                               "* TODO %?"
+                               :clock-in t :clock-resume t)
+
+                               ("tw" "Todo - Website" entry
+                               (file+headline
+                               "~/Documents/Private/todo.org" "Website")
+                               "* TODO %?")
+
+                              ("tr" "Todo - Travel" entry
+                               (file+headline
+                               "~/Documents/Private/todo.org" "Travel")
+                               "* BOOK %?")
+
+                              ("tp" "Todo - Purchase" entry
+                               (file+headline
+                               "~/Documents/Private/todo.org" "Purchase")
+                               "* BUY %?")
+
+                              ("tk" "Todo - Keyboard")
+                              ("tkk" "Todo - Keyboard" entry
+                               (file+headline
+                               "~/Documents/Private/todo.org" "Keyboard")
+                               "* TODO %?")
+
+                              ("tk6" "Todo - Keyboard - 65%" entry
+                               (file+olp
+                               "~/Documents/Private/todo.org" "Todo" "Keyboard" "65%")
+                               "* TODO %?")
+
+                              ("r" "Travel")
+                              ("ro" "Travel - Oregon2020" entry
+                               (file+headline
+                               "~/Documents/Private/todo.org" "Oregon2020")
+                               "* TODO %?")
+                             ))
 #+END_SRC
 
 * Keybinds
@@ -658,12 +697,19 @@ Set org-agenda files
 ** Switch buffers
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-,")
-'(lambda()
-(interactive)
-(select-window (previous-window))))
+                '(lambda()
+                (interactive)
+                (select-window (previous-window))
+                ))
 
 (global-set-key (kbd "C-.")
-'(lambda()
-(interactive)
-(select-window (next-window))))
+                '(lambda()
+                (interactive)
+                (select-window (next-window))
+))
+#+END_SRC
+
+** org-capture
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c c") `org-capture)
 #+END_SRC
