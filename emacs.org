@@ -82,14 +82,14 @@
 #+END_SRC
 
 * Modes
-** js2-mode
+** rjsx-mode
 #+BEGIN_SRC emacs-lisp
-(use-package js2-mode
+(use-package rjsx-mode
   :ensure t)
 
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-mode))
-(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . rjsx-mode))
+(add-to-list 'interpreter-mode-alist '("node" . rjsx-mode))
 #+END_SRC
 
 ** nxml-mode
@@ -643,7 +643,7 @@ Set org-agenda files
 		      ))
 #+END_SRC
 
-** custom
+** org-capture-templates
 #+BEGIN_SRC emacs-lisp
 (setq org-capture-templates '(
                               ("t" "Todo")
@@ -688,13 +688,13 @@ Set org-agenda files
 #+END_SRC
 
 * Keybinds
-** end/start of buffer
+** end/start of buffer (<home> | <end>)
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "<end>") `end-of-buffer)
 (global-set-key (kbd "<home>") `beginning-of-buffer)
+(global-set-key (kbd "<end>") `end-of-buffer)
 #+END_SRC
 
-** Switch buffers
+** Switch buffers (C-, | C-.)
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-,")
                 '(lambda()
@@ -709,7 +709,12 @@ Set org-agenda files
 ))
 #+END_SRC
 
-** org-capture
+** org-capture (C-c c)
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c c") `org-capture)
+#+END_SRC
+
+** org-agenda (C-c a)
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c a") `org-agenda)
 #+END_SRC
