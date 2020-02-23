@@ -614,11 +614,9 @@ Set org-agenda files
 	      (lambda (directory)
 	        (directory-files-recursively
 		 directory org-agenda-file-regexp)
-		)
-	      '("~/.emacs.d/"
-              "~/Documents/Private/")
-              )
-             )
+		) '(
+              "~/Dropbox/org-mode/"
+              )))
       )
   )
 #+END_SRC
@@ -640,6 +638,7 @@ Set org-agenda files
                       ("@WEBSITE" . ?w)
                       ("KEYBOARD" . ?k)
                       ("@OREGON2020")
+                      ("@SCOTLAND2020")
 		      ))
 #+END_SRC
 
@@ -649,41 +648,46 @@ Set org-agenda files
                               ("t" "Todo")
                               ("tt" "Todo" entry
                                (file+headline
-                               "~/Documents/Private/todo.org" "Todo")
-                               "* TODO %?"
-                               :clock-in t :clock-resume t)
+                               "~/Dropbox/org-mode/todo.org" "Todo")
+                               "* TODO %?\nAdded: %U")
 
                                ("tw" "Todo - Website" entry
                                (file+headline
-                               "~/Documents/Private/todo.org" "Website")
-                               "* TODO %?")
+                               "~/Dropbox/org-mode/todo.org" "Website")
+                               "* TODO %?\nAdded: %U")
 
                               ("tr" "Todo - Travel" entry
                                (file+headline
-                               "~/Documents/Private/todo.org" "Travel")
-                               "* BOOK %?")
+                               "~/Dropbox/org-mode/todo.org" "Travel")
+                               "* BOOK %?\nAdded: %U")
 
                               ("tp" "Todo - Purchase" entry
                                (file+headline
-                               "~/Documents/Private/todo.org" "Purchase")
-                               "* BUY %?")
+                               "~/Dropbox/org-mode/todo.org" "Purchase")
+                               "* BUY %?\nAdded: %U")
 
                               ("tk" "Todo - Keyboard")
                               ("tkk" "Todo - Keyboard" entry
                                (file+headline
-                               "~/Documents/Private/todo.org" "Keyboard")
-                               "* TODO %?")
+                               "~/Dropbox/org-mode/todo.org" "Keyboard")
+                               "* TODO %?\nAdded: %U")
 
                               ("tk6" "Todo - Keyboard - 65%" entry
                                (file+olp
-                               "~/Documents/Private/todo.org" "Todo" "Keyboard" "65%")
-                               "* TODO %?")
+                               "~/Dropbox/org-mode/todo.org" "Todo" "Keyboard" "65%")
+                               "* TODO %?\nAdded: %U")
 
                               ("r" "Travel")
                               ("ro" "Travel - Oregon2020" entry
                                (file+headline
-                               "~/Documents/Private/todo.org" "Oregon2020")
-                               "* TODO %?")
+                               "~/Dropbox/org-mode/Trips/usa-oregon-2020.org" "Oregon2020")
+                               "* TODO %?\nAdded: %U")
+
+                              ("r" "Travel")
+                              ("rs" "Travel - Scotland2020" entry
+                               (file+headline
+                               "~/Dropbox/org-mode/Trips/scotland-2020.org" "Scotland2020")
+                               "* TODO %?\nAdded: %U")
                              ))
 #+END_SRC
 
