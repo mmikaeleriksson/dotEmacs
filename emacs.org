@@ -361,14 +361,14 @@ Switch between header and implementation file
 #+BEGIN_SRC emacs-lisp
 (use-package magit
   :ensure t
-  :after (magit))
+  :commands (magit))
 #+END_SRC
 
 ** git-timemachine
 #+BEGIN_SRC emacs-lisp
 (use-package git-timemachine
   :ensure t
-  :after (git-timemachine))
+  :commands (git-timemachine))
 #+END_SRC
 
 ** swiper
