@@ -651,31 +651,32 @@ Set org-agenda files
                                "~/Dropbox/org-mode/todo.org" "Todo")
                                "* TODO %?\nAdded: %U")
 
-                               ("tw" "Todo - Website" entry
+                              ("tp" "Todo - Purchase" entry
                                (file+headline
-                               "~/Dropbox/org-mode/todo.org" "Website")
-                               "* TODO %?\nAdded: %U")
+                               "~/Dropbox/org-mode/todo.org" "Todo")
+                               "* BUY %?\nAdded: %U")
 
                               ("tr" "Todo - Travel" entry
                                (file+headline
-                               "~/Dropbox/org-mode/todo.org" "Travel")
+                               "~/Dropbox/org-mode/Trips/travel.org" "Travel")
                                "* BOOK %?\nAdded: %U")
 
-                              ("tp" "Todo - Purchase" entry
+                              ("k" "Keyboard")
+                              ("kt" "Keyboard - Todo" entry
                                (file+headline
-                               "~/Dropbox/org-mode/todo.org" "Purchase")
-                               "* BUY %?\nAdded: %U")
-
-                              ("tk" "Todo - Keyboard")
-                              ("tkk" "Todo - Keyboard" entry
-                               (file+headline
-                               "~/Dropbox/org-mode/todo.org" "Keyboard")
+                               "~/Dropbox/org-mode/Projects/keyboard.org" "Keyboard")
                                "* TODO %?\nAdded: %U")
 
-                              ("tk6" "Todo - Keyboard - 65%" entry
+                              ("k6" "Keyboard - 65%" entry
                                (file+olp
-                               "~/Dropbox/org-mode/todo.org" "Todo" "Keyboard" "65%")
+                               "~/Dropbox/org-mode/Projects/keyboard.org" "Keyboard" "65%")
                                "* TODO %?\nAdded: %U")
+
+                              ("r" "Travel")
+                              ("rr" "Travel - Travel" entry
+                               (file+headline
+                               "~/Dropbox/org-mode/Trips/travel.org" "Travel")
+                               "* BOOK %?\nAdded: %U")
 
                               ("r" "Travel")
                               ("ro" "Travel - Oregon2020" entry
