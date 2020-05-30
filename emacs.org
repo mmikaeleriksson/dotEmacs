@@ -455,6 +455,20 @@ Switch between header and implementation file
   (set-face-attribute 'minimap-active-region-background nil :background "#342c6b")
 )
 #+END_SRC
+** mu4e (disabled)
+#+BEGIN_SRC emacs-comment
+(use-package mu4e
+  :ensure nil
+  :custom
+  (mu4e-attachment-dir "~/Downloads")
+  (mu4e-maildir "~/Maildir")
+  (mu4e-get-mail-command "mbsync -c ~/.mbsyncrc -a")
+  (mu4e-view-show-images t)
+  (mu4e-compose-in-new-frame t)
+  (mu4e-sent-messages-behavior 'delete)
+  (mu4e-change-filenames-when-moving t)
+)
+#+END_SRC
 * EXWM
   :PROPERTIES:
   :header-args: :tangle no
@@ -639,6 +653,8 @@ Set org-agenda files
                       ("KEYBOARD" . ?k)
                       ("@OREGON2020")
                       ("@SCOTLAND2020")
+                      ("@LINUX" . ?l)
+                      ("@EMACS" . ?e)
 		      ))
 #+END_SRC
 
@@ -651,9 +667,14 @@ Set org-agenda files
                                "~/Dropbox/org-mode/todo.org" "Todo")
                                "* TODO %?\nAdded: %U")
 
+                              ("tg" "Todo - Groceries" entry
+                               (file+headline
+                               "~/Dropbox/org-mode/groceries.org" "Groceries")
+                               "* BUY %?\nAdded: %U")
+
                               ("tp" "Todo - Purchase" entry
                                (file+headline
-                               "~/Dropbox/org-mode/todo.org" "Todo")
+                               "~/Dropbox/org-mode/shopping.org" "Shopping")
                                "* BUY %?\nAdded: %U")
 
                               ("tr" "Todo - Travel" entry
@@ -665,11 +686,6 @@ Set org-agenda files
                               ("kt" "Keyboard - Todo" entry
                                (file+headline
                                "~/Dropbox/org-mode/Projects/keyboard.org" "Keyboard")
-                               "* TODO %?\nAdded: %U")
-
-                              ("k6" "Keyboard - 65%" entry
-                               (file+olp
-                               "~/Dropbox/org-mode/Projects/keyboard.org" "Keyboard" "65%")
                                "* TODO %?\nAdded: %U")
 
                               ("r" "Travel")
@@ -690,6 +706,11 @@ Set org-agenda files
                                "~/Dropbox/org-mode/Trips/scotland-2020.org" "Scotland2020")
                                "* TODO %?\nAdded: %U")
                              ))
+#+END_SRC
+
+** org-agenda
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-window-setup 'current-window)
 #+END_SRC
 
 * Keybinds
