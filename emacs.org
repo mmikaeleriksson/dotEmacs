@@ -469,6 +469,12 @@ Switch between header and implementation file
   (mu4e-change-filenames-when-moving t)
 )
 #+END_SRC
+** helm-org-rifle
+#+BEGIN_SRC emacs-lisp
+(use-package helm-org-rifle
+  :ensure t
+  :commands (helm-org-rifle))
+#+END_SRC
 * EXWM
   :PROPERTIES:
   :header-args: :tangle no
@@ -650,9 +656,7 @@ Set org-agenda files
 #+BEGIN_SRC emacs-lisp
 (setq org-tag-alist '(("@TRAVEL" . ?t)
                       ("@WEBSITE" . ?w)
-                      ("KEYBOARD" . ?k)
-                      ("@OREGON2020")
-                      ("@SCOTLAND2020")
+                      ("@KEYBOARD" . ?k)
                       ("@LINUX" . ?l)
                       ("@EMACS" . ?e)
 		      ))
@@ -682,29 +686,16 @@ Set org-agenda files
                                "~/Dropbox/org-mode/Trips/travel.org" "Travel")
                                "* BOOK %?\nAdded: %U")
 
-                              ("k" "Keyboard")
-                              ("kt" "Keyboard - Todo" entry
+                              ("k" "Keyboard" entry
                                (file+headline
                                "~/Dropbox/org-mode/Projects/keyboard.org" "Keyboard")
                                "* TODO %?\nAdded: %U")
 
-                              ("r" "Travel")
-                              ("rr" "Travel - Travel" entry
+                              ("r" "Travel" entry
                                (file+headline
                                "~/Dropbox/org-mode/Trips/travel.org" "Travel")
                                "* BOOK %?\nAdded: %U")
 
-                              ("r" "Travel")
-                              ("ro" "Travel - Oregon2020" entry
-                               (file+headline
-                               "~/Dropbox/org-mode/Trips/usa-oregon-2020.org" "Oregon2020")
-                               "* TODO %?\nAdded: %U")
-
-                              ("r" "Travel")
-                              ("rs" "Travel - Scotland2020" entry
-                               (file+headline
-                               "~/Dropbox/org-mode/Trips/scotland-2020.org" "Scotland2020")
-                               "* TODO %?\nAdded: %U")
                              ))
 #+END_SRC
 
