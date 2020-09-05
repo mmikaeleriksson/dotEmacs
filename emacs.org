@@ -81,6 +81,11 @@
 	(left-fringe . 0)))
 #+END_SRC
 
+** Disable gpg passphrase cache
+#+BEGIN_SRC emacs-lisp
+(setq epa-file-cache-passphrase-for-symmetric-encryption nil)
+#+END_SRC
+
 * Modes
 ** rjsx-mode
 #+BEGIN_SRC emacs-lisp
@@ -455,8 +460,8 @@ Switch between header and implementation file
   (set-face-attribute 'minimap-active-region-background nil :background "#342c6b")
 )
 #+END_SRC
-** mu4e (disabled)
-#+BEGIN_SRC emacs-comment
+** mu4e
+#+BEGIN_SRC emacs-lisp
 (use-package mu4e
   :ensure nil
   :custom
@@ -467,14 +472,26 @@ Switch between header and implementation file
   (mu4e-compose-in-new-frame t)
   (mu4e-sent-messages-behavior 'delete)
   (mu4e-change-filenames-when-moving t)
+  ;;dracula color
+  (set-face-background 'mu4e-view-body-face "#282a36")
 )
 #+END_SRC
+*** mbsync
+*** mu index
 ** helm-org-rifle
 #+BEGIN_SRC emacs-lisp
 (use-package helm-org-rifle
   :ensure t
   :commands (helm-org-rifle))
 #+END_SRC
+** helm-mu
+#+BEGIN_SRC emacs-lisp
+(use-package helm-mu
+  :ensure t
+  :commands (helm-mu)
+)
+#+END_SRC
+
 * EXWM
   :PROPERTIES:
   :header-args: :tangle no
@@ -613,18 +630,21 @@ Set org-agenda files
 	'((:name "Deadline"
 		 :deadline t
 		 :order 1)
+                 (:name "Prio A"
+                 :priority "A"
+                 :order 2)
 	  (:name "Todo"
 		 :todo ("TODO")
-		 :order 2)
+		 :order 3)
 	  (:name "Book"
 		 :todo ("BOOK")
-		 :order 3)
+		 :order 4)
 	  (:name "Lookup"
 		 :todo ("LOOKUP")
-		 :order 4)
+		 :order 5)
 	  (:name "Buy"
 		 :todo ("BUY")
-		 :order 5))
+		 :order 6))
 	)
   :config
   (org-super-agenda-mode)
@@ -695,6 +715,11 @@ Set org-agenda files
                                (file+headline
                                "~/Dropbox/org-mode/Trips/travel.org" "Travel")
                                "* BOOK %?\nAdded: %U")
+
+                              ("j" "Journal" entry
+                               (file+headline
+                               "~/Dropbox/org-mode/journal.org.gpg" "Journal")
+                               "* %T %^g")
 
                              ))
 #+END_SRC
