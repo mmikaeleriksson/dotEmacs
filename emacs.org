@@ -11,7 +11,6 @@
                          ("stable-melpa" . "http://stable.melpa.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")))
 
-(package-initialize)
 (setq package-enable-at-startup nil)
 (unless package-archive-contents
   (message "Refreshing package archives...")
@@ -461,9 +460,9 @@ Switch between header and implementation file
 )
 #+END_SRC
 ** mu4e
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-comment
 (use-package mu4e
-  :ensure nil
+  :ensure t
   :custom
   (mu4e-attachment-dir "~/Downloads")
   (mu4e-maildir "~/Maildir")
@@ -667,7 +666,7 @@ Set org-agenda files
  :ensure t
  :init
  (setq org-bullets-bullet-list
-       '("ァ" "ィ" "ゥ" "ェ" "ォ"))
+       '("ɑ" "β" "γ" "δ" "ε"))
  :config
  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
