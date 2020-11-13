@@ -93,6 +93,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx?\\'" . rjsx-mode))
 (add-to-list 'interpreter-mode-alist '("node" . rjsx-mode))
 #+END_SRC
 
@@ -146,26 +147,6 @@ Switch between header and implementation file
 (global-set-key (kbd "M-s %") 'miker/isearch-query-replace-symbol-at-point)
 #+END_SRC
 * Look and feel
-** Theme
-*** chocolate-theme
-#+BEGIN_SRC emacs-lisp
-;;(set-background-color "wheat2")
-;;(use-package chocolate-theme
-;;  :ensure t
-;;  :config
-;;  (load-theme 'chocolate t))
-#+END_SRC
-
-*** dracula-theme
-#+BEGIN_SRC emacs-lisp
-(use-package dracula-theme
-  :ensure t
-  :config
-  (load-theme 'dracula t))
-
-(set-face-attribute 'region nil :background "#342c6b" :foreground nil)
-#+END_SRC
-
 ** Layout
 *** Add line at top of the buffer to show column length
 #+BEGIN_SRC emacs-lisp
@@ -175,9 +156,7 @@ Switch between header and implementation file
 
 #+BEGIN_SRC emacs-lisp
 ;;Highlight line
-;;(global-hl-line-mode 1)
-;;(set-face-background hl-line-face "darkgrey")
-(set-cursor-color "#C8FF03")
+(global-hl-line-mode 1)
 #+END_SRC
 
 *** Fringe git-gutter settings
@@ -189,17 +168,12 @@ Switch between header and implementation file
 (use-package git-gutter-fringe
   :ensure t)
 
-(set-face-attribute 'fringe nil :background "darkgrey" :foreground "darkgrey")
 (setq-default right-fringe-width 15)
 (setq git-gutter-fr:side 'right-fringe)
-;foregound
+;colors
 (set-face-foreground 'git-gutter-fr:modified "orange")
 (set-face-foreground 'git-gutter-fr:added "dark sea green")
 (set-face-foreground 'git-gutter-fr:deleted "tomato1")
-;background
-(set-face-background 'git-gutter-fr:added  "SystemGrayText")
-(set-face-background 'git-gutter-fr:deleted  "SystemGrayText")
-(set-face-background 'git-gutter-fr:modified  "SystemGrayText")
 (global-git-gutter-mode)
 #+END_SRC
 
@@ -333,6 +307,33 @@ Switch between header and implementation file
 (display-time-mode 1)
 #+END_SRC
 
+** Theme
+*** chocolate-theme
+#+BEGIN_SRC emacs-comment
+;;(set-background-color "wheat2")
+(use-package chocolate-theme
+  :ensure t
+  :config
+  (load-theme 'chocolate t))
+#+END_SRC
+
+*** dracula-theme
+#+BEGIN_SRC emacs-lisp
+(use-package dracula-theme
+  :ensure t
+  :config
+  (load-theme 'dracula t))
+
+(set-face-attribute 'region nil :background "#342c6b" :foreground nil)
+(set-face-attribute 'fringe nil :background "#44475a" :foreground "#6272a4")
+(set-face-background 'git-gutter-fr:modified "#44475a")
+(set-face-background 'git-gutter-fr:added "#44475a")
+(set-face-background 'git-gutter-fr:deleted "#44475a")
+
+(set-face-background hl-line-face "#44475a")
+(set-cursor-color "#C8FF03")
+#+END_SRC
+
 ** Input
 *** Insert matching delimiters
 #+BEGIN_SRC emacs-lisp
@@ -419,7 +420,6 @@ Switch between header and implementation file
 (use-package expand-region
   :ensure t
   :bind
-  ("C-=" . er/expand-region)
   ("C-;" . er/expand-region))
 #+END_SRC
 
@@ -676,6 +676,7 @@ Set org-agenda files
 (setq org-tag-alist '(("@TRAVEL" . ?t)
                       ("@WEBSITE" . ?w)
                       ("@KEYBOARD" . ?k)
+                      ("@COMPUTER" . ?c)
                       ("@LINUX" . ?l)
                       ("@EMACS" . ?e)
 		      ))
