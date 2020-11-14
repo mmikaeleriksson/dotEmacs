@@ -310,7 +310,6 @@ Switch between header and implementation file
 ** Theme
 *** chocolate-theme
 #+BEGIN_SRC emacs-comment
-;;(set-background-color "wheat2")
 (use-package chocolate-theme
   :ensure t
   :config
@@ -340,6 +339,7 @@ Switch between header and implementation file
 (electric-pair-mode 1)
 (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
 #+END_SRC
+
 *** Indentation
 #+BEGIN_SRC emacs-lisp
 (setq-default indent-tabs-mode nil)
@@ -349,10 +349,18 @@ Switch between header and implementation file
 (setq-default cmake-tab-width 4)
 (setq-default nxml-child-indent 4 nxml-attribute-indent 4)
 #+END_SRC
+
 *** I-search
 #+BEGIN_SRC emacs-lisp
 (setq search-whitespace-regexp ".*?")
 #+END_SRC
+
+*** Resize window
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C--") 'shrink-window)
+(global-set-key (kbd "C-+") 'enlarge-window)
+#+END_SRC
+
 * Packages
 ** Clang-format
 #+BEGIN_SRC emacs-lisp
@@ -428,8 +436,8 @@ Switch between header and implementation file
 (use-package move-text
   :ensure t
   :bind
-  (("C-S-p" . move-text-up)
-   ("C-S-n" . move-text-down)))
+  (("M-p" . move-text-up)
+   ("M-n" . move-text-down)))
 #+END_SRC
 
 ** which-key
@@ -489,6 +497,25 @@ Switch between header and implementation file
   :ensure t
   :commands (helm-mu)
 )
+#+END_SRC
+
+** rainbow-mode
+#+BEGIN_SRC emacs-lisp
+(use-package rainbow-mode
+  :ensure t
+)
+#+END_SRC
+
+** highlight-indent-guides
+#+BEGIN_SRC emacs-lisp
+(use-package highlight-indent-guides
+  :ensure t
+  :config
+  (setq highlight-indent-guides-method 'character)
+  (setq highlight-indent-guides-responsive 'top)
+)
+
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 #+END_SRC
 
 * EXWM
