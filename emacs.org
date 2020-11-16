@@ -436,8 +436,8 @@ Switch between header and implementation file
 (use-package move-text
   :ensure t
   :bind
-  (("M-p" . move-text-up)
-   ("M-n" . move-text-down)))
+  (("C-S-p" . move-text-up)
+   ("C-S-n" . move-text-down)))
 #+END_SRC
 
 ** which-key
