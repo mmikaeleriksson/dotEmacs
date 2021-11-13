@@ -60,7 +60,7 @@
 #+END_SRC
 
 ** Auto-save and backup files saved in TEMP
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-comment
 (setq backup-directory-alist
       `((".*" . ,"~/.saves")))
 (setq custom-file "~/.emacs.d/auto-custom.el")
@@ -74,7 +74,7 @@
 ** settings for new frames (that is new window in windows, C-x 5 2)
 #+BEGIN_SRC emacs-lisp
 (setq default-frame-alist
-      '((font . "Fira Mono")
+      '((font . "Roboto Mono")
 	(vertical-scroll-bars . nil)
 	(menu-bar-lines . 0)
 	(left-fringe . 0)))
@@ -148,6 +148,11 @@ Switch between header and implementation file
 #+END_SRC
 * Look and feel
 ** Layout
+*** Font
+#+BEGIN_SRC emacs-lisp
+(setcdr (assoc 'font default-frame-alist) "Roboto Mono-10:antialias=subpixel")
+#+END_SRC
+
 *** Add line at top of the buffer to show column length
 #+BEGIN_SRC emacs-lisp
 (setq-default header-line-format
@@ -632,6 +637,11 @@ Run xrandr in term to see current settings
 #+END_SRC
 
 * Org
+** Path
+#+BEGIN_SRC emacs-lisp
+(setq miker/org-dir "C:/Users/mmika/Dropbox/org-mode")
+#+END_SRC
+
 ** Unbind
 C-, is reserved for switching buffers
 C-c C-r is reserved for swiper
@@ -643,7 +653,7 @@ C-c C-r is reserved for swiper
 ** org-todo-keywords
 #+BEGIN_SRC emacs-lisp
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "BUY(b!)" "BOOK(k!)" "LOOKUP(l!)" "|" "DONE(d!)")))
+      '((sequence "TODO(t!)" "BUY(b!)" "BOOK(k!)" "LOOKUP(l!)" "WAITING(w!)" "|" "DONE(d!)")))
 #+END_SRC
 
 ** org-super-agenda
@@ -681,7 +691,7 @@ Set org-agenda files
 	        (directory-files-recursively
 		 directory org-agenda-file-regexp)
 		) '(
-              "~/Dropbox/org-mode/"
+              "C:/Users/mmika/Dropbox/org-mode/"
               )))
       )
   )
@@ -715,37 +725,37 @@ Set org-agenda files
                               ("t" "Todo")
                               ("tt" "Todo" entry
                                (file+headline
-                               "~/Dropbox/org-mode/todo.org" "Todo")
+                               (concat miker/org-dir "/todo.org") "Todo")
                                "* TODO %?\nAdded: %U")
 
                               ("tg" "Todo - Groceries" entry
                                (file+headline
-                               "~/Dropbox/org-mode/groceries.org" "Groceries")
+                               (concat miker/org-dir "/groceries.org") "Groceries")
                                "* BUY %?\nAdded: %U")
 
                               ("tp" "Todo - Purchase" entry
                                (file+headline
-                               "~/Dropbox/org-mode/shopping.org" "Shopping")
+                               (concat miker/org-dir "/shopping.org") "Shopping")
                                "* BUY %?\nAdded: %U")
 
                               ("tr" "Todo - Travel" entry
                                (file+headline
-                               "~/Dropbox/org-mode/Trips/travel.org" "Travel")
+                               (concat miker/org-dir "/travel.org") "Travel")
                                "* BOOK %?\nAdded: %U")
 
                               ("k" "Keyboard" entry
                                (file+headline
-                               "~/Dropbox/org-mode/Projects/keyboard.org" "Keyboard")
+                               (concat miker/org-dir "/keyboard.org") "Keyboard")
                                "* TODO %?\nAdded: %U")
 
                               ("r" "Travel" entry
                                (file+headline
-                               "~/Dropbox/org-mode/Trips/travel.org" "Travel")
+                               (concat miker/org-dir "/travel.org") "Travel")
                                "* BOOK %?\nAdded: %U")
 
                               ("j" "Journal" entry
                                (file+headline
-                               "~/Dropbox/org-mode/journal.org.gpg" "Journal")
+                               (concat miker/org-dir "/journal.org.gpg") "Journal")
                                "* %T %^g")
 
                              ))
